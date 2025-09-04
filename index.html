@@ -198,7 +198,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-top: 10px;
+            margin-top: 3vh;
         }
 
         .btn {
@@ -308,6 +308,14 @@
         /* Main Content */
         .main-content {
             padding: 80px 0;
+        }
+
+        
+        .section-title-big {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
         }
 
         .section-title {
@@ -427,6 +435,12 @@
             gap: 40px;
             align-items: center;
         }
+
+        /* CTA: intro/footnote improvements */
+        .cta-section > .container > h1 { font-size: 32px; margin-bottom: 8px; }
+        .cta-section > .container > p { max-width: 820px; margin: 0 auto 28px; opacity: 0.9; }
+        .cta-footnote { margin-top: 16px; opacity: 0.9; }
+        .cta-footnote a { color: #ffffff; text-decoration: underline; }
 
         .cta-item {
             background: rgba(255,255,255,0.06);
@@ -550,6 +564,84 @@
             margin-bottom: 10px;
         }
 
+        /* Partners Section */
+        .partners-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        .partners-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 36px 48px;
+            justify-content: center;
+            align-items: center;
+        }
+        .partners-logos img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0%);
+            opacity: 0.95;
+            transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+        }
+        .partners-logos img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        /* Promise Section (after header) */
+        .promise-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        .promise-section .section-title { margin-bottom: 10px; }
+        .promise-section .lead {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .promise-text {
+            max-width: 900px;
+            margin: 8px auto 0;
+            color: #555;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .promise-list {
+            max-width: 900px;
+            margin: 10px auto 24px;
+            padding-left: 18px;
+            color: #333;
+        }
+        .promise-list li { margin-bottom: 8px; }
+        .promise-author { max-width: 820px; margin: 8px auto 10px; color: #444; text-align: center; opacity: 0.95; }
+        .promise-benefits { list-style: none; max-width: 760px; margin: 8px auto 16px; padding-left: 0; display: grid; grid-template-columns: 1fr; gap: 8px; justify-items: center; }
+        .promise-benefits li { margin: 0; color: #2b2b2b; }
+        .promise-benefits li::before { content: "✓"; color: #00ae42; margin-right: 8px; }
+
+        /* Promise: green highlight container */
+        .promise-highlight {
+            max-width: 900px;
+            margin: 20px auto 0;
+            background: #eaf7f0;
+            border: 1px solid #cfeadd;
+            border-radius: var(--box-radius);
+            padding: 16px 18px;
+            box-shadow: var(--box-shadow-light);
+        }
+
+        /* Promise: features layout override */
+        .promise-section .features-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 14px; margin-bottom: 28px; }
+        .promise-section .feature-item { padding: 16px 16px; }
+        .promise-section .feature-item h3 { font-size: 18px; margin-bottom: 8px; color: #333; }
+        .promise-section .feature-item p { font-size: 14px; color: #666; line-height: 1.5; }
+
+        /* Promise: grouped layout (reserved for future) */
+        .promise-grid { max-width: 1000px; margin: 18px auto 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
+        .promise-cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .promise-card { background: #fff; border: 1px solid var(--box-border-light); border-radius: var(--box-radius); padding: 14px 16px; box-shadow: var(--box-shadow-light); font-weight: 600; color: #2b2b2b; }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
@@ -598,7 +690,7 @@
                 left: 0;
                 right: 0;
                 display: none;
-                background: #0a383352;
+                background: #0a3833;
                 border-radius: 16px;
                 box-shadow: 0 6px 20px rgba(0,0,0,0.12);
                 border: 1px solid rgba(255,255,255,0.18);
@@ -632,6 +724,7 @@
             .content-section { gap: 24px; }
 
             .section-title { font-size: 28px; }
+            .section-title-big { font-size: 36px; }
             .section-subtitle { font-size: 16px; margin-bottom: 32px; }
 
             .stats-section { padding: 40px 0; }
@@ -647,6 +740,17 @@
 
             /* Anchor offset för fast header */
             [id] { scroll-margin-top: 90px; }
+            /* Reverse order for specific section on mobile */
+            .reverse-mobile .content-text { grid-row: 1; }
+            .reverse-mobile .content-image { grid-row: 2; }
+
+            /* Partners: mobile adjustments */
+            .partners-logos img { height: 40px; }
+
+            /* Promise: mobile adjustments */
+            .promise-benefits { grid-template-columns: 1fr; }
+            .promise-section .features-grid { grid-template-columns: 1fr; gap: 16px; }
+
         }
 
         @media (max-width: 480px) {
@@ -670,15 +774,13 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="/images/logo2.png" alt="Skärholmens Pall">
+                    <img src="/images/logo2.png" alt="Skärholmens Pall" href="#hem">
                 </div>
                 <nav id="primary-nav">
                     <ul>
-                        <li><a href="#hem">Hem</a></li>
-                        <li><a href="#erbjudande">Erbjudande</a></li>
+                        <li><a href="#erbjudande">Om oss</a></li>
                         <li><a href="#hallbarhet">Hållbarhet</a></li>
                         <li><a href="#sa-funkar-det">Så funkar det</a></li>
-                        <li><a href="#kundcase">Kundcase</a></li>
                         <li><a href="#kontakt">Kontakt</a></li>
                     </ul>
                 </nav>
@@ -689,10 +791,12 @@
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
-                <button class="contact-button">KONTAKTA OSS</button>
+                <button class="contact-button" onclick="window.location.href='mailto:skarholmenspall@yahoo.se'">KONTAKTA OSS</button>
             </div>
         </div>
     </header>
+
+    
 
     <!-- Hero Section -->
     <section class="hero" id="hem">
@@ -700,13 +804,11 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="text-box text-box--hero">
-                        <h1>Rätt pall. Lägre kostnad. Högre leveranssäkerhet.</h1>
-                        <p>Mätbar hållbarhet – redo för CSRD. Vi använder verifierade metoder som LCA, EPD och GHG Protocol för att beräkna klimatpåverkan.</p>
-                        <p>Ni får färdiga siffror till CSRD & ESRS, EcoVadis, SBTi samt stöd för FSC® och PEFC – enkelt, transparent och pålitligt.</p>
+                        <h1>Rätt pall till rätt pris, med högsta leveranssäkerhet.</h1>
+                        <p>Klimatsmarta pallösningar med cirkulära flöden och full transparens. Få tillgång till detaljerad klimatdata för hela er pallhantering och ta kontroll över ert hållbarhetsarbete.</p>
                         <div class="hero-cta">
-                            <a href="#kontakt" class="btn btn-primary">Boka behovsgenomgång</a>
-                            <a href="#kontakt" class="btn btn-outline">Be om offert</a>
-                            <a href="#hallbarhet" class="btn btn-outline">Hämta klimatdatablad</a>
+                            <a href="mailto:skarholmenspall@yahoo.se" class="btn btn-primary">Boka behovsgenomgång</a>
+                            <a href="mailto:skarholmenspall@yahoo.se" class="btn btn-outline">Kontakta oss</a>
                         </div>
                     </div>
                 </div>
@@ -731,7 +833,7 @@
     </section>
 
     <!-- Services Icons -->
-    <section class="services">
+    <section class="services" style="display: none;">
         <div class="container">
             <div class="services-grid">
                 <div class="service-item">
@@ -747,16 +849,7 @@
                     </div>
                     <h3>Rätt pall till rätt plats</h3>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img">
-                            <circle cx="8.5" cy="12" r="3"></circle>
-                            <line x1="14" y1="8" x2="14" y2="16"></line>
-                            <polyline points="11 13 14 16 17 13"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Lägre totalkostnad (TCO)</h3>
-                </div>
+                
                 <div class="service-item">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img">
@@ -777,7 +870,7 @@
                             <path d="M6 5v1.5l1 1"></path>
                         </svg>
                     </div>
-                    <h3>Hög leveranssäkerhet (OTIF)</h3>
+                    <h3>Hög leveransprecision</h3>
                 </div>
                 <div class="service-item">
                     <div class="service-icon">
@@ -809,28 +902,47 @@
     <!-- Main Content -->
     <main class="main-content" id="erbjudande">
         <div class="container">
-            <h2 class="section-title">Värdeerbjudande</h2>
-            <p class="section-subtitle">Vi levererar rätt pall, i rätt tid, till rätt plats – med lägre TCO, hög OTIF och klimatdata redo för CSRD.</p>
 
-            <!-- Features Grid -->
+   <!-- Promise Section -->
+    <section class="promise-section" aria-labelledby="promise-title">
+        <div class="container">
+            <h2 id="promise-title" class="section-title-big">Pallen finns där när den ska.</h2>
+
+
+            <p class="promise-author">Skärholmen Pall är en erfaren och pålitlig aktör inom cirkulär pallhantering. Företaget drivs av Peter Forstén, som har över 35 års branscherfarenhet och en gedigen bakgrund inom logistik, återbruk och pallförsäljning. Sedan 1987 har han arbetat med allt från insamling och sortering till reparation och effektiv återanvändning av lastpallar.
+            </p>
+
             <div class="features-grid">
                 <div class="feature-item">
-                    <h3>Rätt pall & kvalitet</h3>
-                    <p>Korrekt typ, mått och kvalitetsklassning för era flöden – minimerar driftstopp och skador.</p>
+                    <h3>Flexibla volymer</h3>
+                    <p>Vi skalar upp eller ner när behovet ändras – anpassar oss efter era behov.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Säkerhetslager nära er</h3>
-                    <p>Buffertlager, säsongsplanering och tydliga cut-off-tider för stabila ledtider.</p>
+                    <h3>Trygghet</h3>
+                    <p>Rätt pall på rätt plats, i rätt tid. Alltid.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Proaktiv planering & avisering</h3>
-                    <p>Planering efter efterfrågan, proaktiv avvikelsehantering och transparent kommunikation.</p>
+                    <h3>Kostnad & klimatkontroll</h3>
+                    <p>Full transparens kring kostnader och klimatpåverkan med data för CSRD-rapportering.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Spårbarhet & SLA</h3>
-                    <p>SLA-baserade leveranser med mätbar OTIF och spårbarhet genom hela flödet.</p>
+                    <h3>Enkla prismodeller</h3>
+                    <p>Inga dolda avgifter och 3 månaders prisgaranti för trygg och förutsägbar ekonomi.</p>
                 </div>
             </div>
+            <div class="promise-highlight" role="region" aria-label="Behovsanalys och fördelar">
+                <p class="lead">Nu erbjuder vi en kostnadsfri behovsanalys för att se hur vi kan:</p>
+                <ul class="promise-benefits">
+                    <li>Minska era kostnader</li>
+                    <li>Höja leveranssäkerheten</li>
+                    <li>Leverera CO₂-siffror godkända för hållbarhetsredovisningen</li>
+                </ul>
+            </div>
+            <p class="promise-text">Vill du veta hur mycket ni kan spara? Hör av dig så tittar vi på det tillsammans.</p>
+
+        </div>
+    </section>
+
 
             <!-- Content Sections -->
             <div class="content-section">
@@ -838,19 +950,24 @@
                     <h2 id="hallbarhet">Mätbar hållbarhet – redo för CSRD</h2>
                     <p>Vi använder verifierade metoder som LCA, EPD och GHG Protocol för att kvantifiera klimatpåverkan per palltyp och flöde.</p>
                     <p>Klimatdata levereras i format som stödjer CSRD & ESRS, EcoVadis och SBTi, med koppling till FSC® och PEFC där relevant. Ni får färdiga siffror och tydliga antaganden – enkelt och transparent.</p>
+                    <p>Med Skärholmen Palls digitala klimatdata får du svart på vitt hur mycket CO₂ du sparar. Dessa siffror kan du använda i din hållbarhetsredovisning enligt CSRD, där varje sparad pall stärker din rapport med faktiska utsläppsminskningar.
+                        Det innebär att återbruk inte bara minskar belastningen – det förbättrar dina klimatvärden.
+                        
+                        Du går från att kompensera till att visa faktisk förbättring.</p>
+                
                 </div>
                 <div class="content-image">
                     <img src="/images/enviroment4.png" alt="Smart lager med automatiserad pallhantering">
                 </div>
             </div>
 
-            <div class="content-section">
+            <div class="content-section reverse-mobile">
                 <div class="content-image">
                     <img src="/images/Pall1.png" alt="Smart Returs expertteam">
                 </div>
                 <div class="content-text">
                     <h2 id="pallhantering">Pallhantering</h2>
-                    <p>Vårt förbättringsprogram för pallhantering: data, rutiner och praktiska förbättringar som sänker TCO och höjer leveranssäkerhet.</p>
+                    <p>Vårt förbättringsprogram för pallhantering: data, rutiner och praktiska förbättringar som höjer leveranssäkerheten.</p>
                     <p>Vi kombinerar cirkulära flöden (återanvändning, reparation, sortering) med spårbarhet och rapportering – rent och grönt.</p>
                 </div>
             </div>
@@ -858,10 +975,10 @@
             <div class="content-section">
                 <div class="content-text">
                     <h2 id="sa-funkar-det">Så funkar det</h2>
-                    <p><strong>1) Behovsanalys:</strong> Genomgång av flöden, volymer, mått och kvalitetskrav.</p>
-                    <p><strong>2) Upplägg & SLA:</strong> Säkerhetslager, cut-off-tider, returprogram och KPI:er.</p>
-                    <p><strong>3) Go-live:</strong> Rullande leveranser, avisering och avvikelsehantering.</p>
-                    <p><strong>4) Uppföljning:</strong> OTIF, ledtid, skadekvot, kostnad per enhet – med klimatdata per palltyp.</p>
+                    <p><strong>1) Sortering:</strong> Ni sorterar pallar i olika högar – engångspall, halvpall, övrigt trä</p>
+                    <p><strong>2) Hämtning:</strong> Vi hämtar regelbundet – anpassat efter ert flöde</p>
+                    <p><strong>3) Återanvändning:</strong> Vi återanvänder det som går – resten återvinns ansvarsfullt</p>
+                    <p><strong>4) Klimatdata:</strong> Ni får klimatdata tillbaka – klart för hållbarhetsredovisningen</p>
                 </div>
                 <div class="content-image">
                     <img src="/images/safunkardet.png" alt="Process för pallhantering">
@@ -873,11 +990,11 @@
     <!-- Stats Section -->
     <section class="stats-section">
         <div class="container">
-            <h2 class="section-title">Bevis & KPI:er</h2>
+            <h2 class="section-title">Bevis & nyckeltal</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <h3>99%</h3>
-                    <p>OTIF (leveransprecision)</p>
+                    <p>Leveransprecision</p>
                 </div>
                 <div class="stat-item">
                     <h3>CSRD</h3>
@@ -927,14 +1044,7 @@
                         <p>LCA/EPD/GHG-beräkningar per palltyp – färdiga siffror till CSRD & ESRS, EcoVadis och SBTi.</p>
                     </div>
                 </div>
-                <div class="news-item">
-                    <img src="https://via.placeholder.com/300x200/00ae42/ffffff?text=TCO" alt="Sänkt TCO">
-                    <div class="news-content">
-                        <div class="news-meta">Kostnad • Effektivitet</div>
-                        <h3>Sänkt totalkostnad</h3>
-                        <p>Smartare flöden, återanvändning och returprogram minskar TCO utan att tumma på kvalitet.</p>
-                    </div>
-                </div>
+                
                 <div class="news-item">
                     <img src="https://via.placeholder.com/300x200/00ae42/ffffff?text=Cirkularitet" alt="Cirkulära flöden">
                     <div class="news-content">
@@ -947,19 +1057,37 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="kontakt">
+    <!-- Partners Section -->
+    <section class="partners-section" aria-labelledby="partners-title">
         <div class="container">
+            <h2 id="partners-title" class="section-title">Samarbete</h2>
+            <p class="section-subtitle">Vi samarbetar med Sveriges största logistikbolag och byggaktörer för att skapa hållbara och kostnadseffektiva flöden av lastpallar.</p>
+            <div class="partners-logos" aria-label="Samarbetspartners">
+                <img src="/images/samarbeten/DHL.png" alt="DHL" loading="lazy">
+                <img src="/images/samarbeten/DSV.png" alt="DSV" loading="lazy">
+                <img src="/images/samarbeten/Logo_DB_Schenker.svg.png" alt="DB Schenker" loading="lazy">
+                <img src="/images/samarbeten/Frigoscandia_logo.png" alt="Frigoscandia" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="cta-section" id="kontakt">
+        
+        <div class="container">
+            <h1>Låt oss prata om era pallflöden</h1>
+            <p>Jag heter Peter och har jobbat med pallflöden i över 40 år. Hör av dig, så tar vi fram en lösning som funkar för er och bidrar till både miljön och resultatet.</p>
+
             <div class="cta-content">
                 <div class="cta-item">
                     <h3>Boka behovsgenomgång</h3>
                     <p>Få en kostnadsfri genomgång av pallflöden, behov och möjlig besparing.</p>
-                    <div class="cta-actions"><a href="#" class="btn">Boka möte</a></div>
+                    <div class="cta-actions"><a href="mailto:skarholmenspall@yahoo.se?subject=Boka%20behovsgenomg%C3%A5ng%20%E2%80%93%20Sk%C3%A4rholmens%20Pall&body=Hej%20Peter%2C%0A%0AVi%20vill%20boka%20en%20behovsgenomg%C3%A5ng.%20F%C3%B6rslag%20p%C3%A5%20tider%3A%20...%0A%0AV%C3%A5ra%20pallfl%C3%B6den%20i%20korthet%3A%0A-%20Volym%2Fvecka%3A%20...%0A-%20Palltyper%3A%20...%0A-%20Platser%3A%20...%0A%0AMvh%2C%0A%5Bnamn%5D%0A%5Bbolag%5D%0A%5Btelefon%5D" class="btn">Boka möte</a></div>
                 </div>
                 <div class="cta-item">
                     <h3>Be om offert</h3>
-                    <p>Vi återkommer snabbt med förslag på upplägg, SLA och prisbild.</p>
-                    <div class="cta-actions"><a href="#" class="btn">Be om offert</a></div>
+                    <p>Vi återkommer snabbt med förslag på upplägg, servicenivåavtal och prisbild.</p>
+                    <div class="cta-actions"><a href="mailto:skarholmenspall@yahoo.se?subject=Offertf%C3%B6rfr%C3%A5gan%20%E2%80%93%20Sk%C3%A4rholmens%20Pall&body=Hej%20Peter%2C%0A%0AVi%20%C3%B6nskar%20offert%20p%C3%A5%20pallhantering.%20V%C3%A5ra%20ramar%3A%0A-%20Volym%2Fvecka%3A%20...%0A-%20Palltyper%3A%20...%0A-%20Platser%3A%20...%0A-%20Serviceniv%C3%A5avtal%3A%20...%0A%0AMvh%2C%0A%5Bnamn%5D%0A%5Bbolag%5D%0A%5Btelefon%5D" class="btn">Be om offert</a></div>
                 </div>
                 <div class="cta-item">
                     <h3>Hämta klimatdatablad</h3>
@@ -967,6 +1095,7 @@
                     <div class="cta-actions"><a href="#hallbarhet" class="btn">Ladda ned</a></div>
                 </div>
             </div>
+            <div class="cta-footnote">Föredrar du att ringa? <a href="tel:+46707327281">070 732 72 81</a></div>
         </div>
     </section>
 
@@ -981,7 +1110,7 @@
                         <li><a href="#">Vår historia</a></li>
                         <li><a href="#">Karriär</a></li>
                         <li><a href="#">Nyheter</a></li>
-                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
