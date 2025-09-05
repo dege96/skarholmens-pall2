@@ -572,51 +572,30 @@
             margin-bottom: 10px;
         }
 
-                 /* Partners Section */
-         .partners-section {
-             background: #ffffff;
-             padding: 60px 0;
-             overflow: hidden;
-         }
-         .partners-logos {
-             display: flex;
-             gap: 60px;
-             align-items: center;
-             height: 60px;
-             animation: scroll-right 60s linear infinite;
-             white-space: nowrap;
-             /* Break out of container to full width */
-             position: relative;
-             left: 50%;
-             right: 50%;
-             margin-left: -50vw;
-             margin-right: -50vw;
-             width: 100vw;
-             max-width: 100vw;
-             padding: 0 20px;
-         }
-         .partners-logos img {
-             height: 60px;
-             width: auto;
-             object-fit: contain;
-             filter: grayscale(0%);
-             opacity: 0.95;
-             transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
-             flex-shrink: 0;
-         }
-         .partners-logos img:hover {
-             opacity: 1;
-             filter: grayscale(0%);
-         }
-         
-         @keyframes scroll-right {
-             0% { transform: translateX(100%); }
-             100% { transform: translateX(-100%); }
-         }
-         
-         .partners-logos:hover {
-             animation-play-state: paused;
-         }
+        /* Partners Section */
+        .partners-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        .partners-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 36px 48px;
+            justify-content: center;
+            align-items: center;
+        }
+        .partners-logos img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0%);
+            opacity: 0.95;
+            transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+        }
+        .partners-logos img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
 
         /* Promise Section (after header) */
         .promise-section {
@@ -781,14 +760,8 @@
             .reverse-mobile .content-text { grid-row: 1; }
             .reverse-mobile .content-image { grid-row: 2; }
 
-                         /* Partners: mobile adjustments */
-             .partners-logos { 
-                 animation: scroll-right 30s linear infinite;
-                 height: 50px; 
-                 gap: 40px; 
-                 padding: 0 16px;
-             }
-             .partners-logos img { height: 29px; }
+            /* Partners: mobile adjustments */
+            .partners-logos img { height: 40px; }
 
             /* Promise: mobile adjustments */
             .promise-benefits { grid-template-columns: 1fr; }
@@ -849,7 +822,7 @@
                 <div class="hero-text">
                     <div class="text-box text-box--hero">
                         <h1>Rätt pall till rätt pris, med högsta leveranssäkerhet.</h1>
-                        <p>Klimatsmarta pallösningar med cirkulära flöden och full transparens. Få tillgång till detaljerad klimatdata för hela er pallhantering och ta kontroll över ert hållbarhetsarbete.</p>
+                        <p>Med över 35 års branscherfarenhet och en gedigen bakgrund inom logistik, återbruk och pallförsäljning, erbjuder Skärholmens Pall klimatsmarta pallösningar med cirkulära flöden och full transparens. Få tillgång till detaljerad klimatdata för hela er pallhantering och ta kontroll över ert hållbarhetsarbete.</p>
                         <div class="hero-cta">
                             <a href="mailto:skarholmenspall@yahoo.se" class="btn btn-primary">Boka behovsgenomgång</a>
                             <a href="mailto:skarholmenspall@yahoo.se" class="btn btn-outline">Kontakta oss</a>
