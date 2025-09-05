@@ -8,6 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+
+        .development-title {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: #e28e2d !important;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -393,7 +400,8 @@
 
         .stats-section {
             background: #f8f9fa;
-            padding: 60px 0;
+            padding: 60px 22px;
+            border-radius: 16px;
             text-align: center;
         }
 
@@ -564,30 +572,51 @@
             margin-bottom: 10px;
         }
 
-        /* Partners Section */
-        .partners-section {
-            background: #ffffff;
-            padding: 60px 0;
-        }
-        .partners-logos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 36px 48px;
-            justify-content: center;
-            align-items: center;
-        }
-        .partners-logos img {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(0%);
-            opacity: 0.95;
-            transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
-        }
-        .partners-logos img:hover {
-            opacity: 1;
-            filter: grayscale(0%);
-        }
+                 /* Partners Section */
+         .partners-section {
+             background: #ffffff;
+             padding: 60px 0;
+             overflow: hidden;
+         }
+         .partners-logos {
+             display: flex;
+             gap: 60px;
+             align-items: center;
+             height: 60px;
+             animation: scroll-right 60s linear infinite;
+             white-space: nowrap;
+             /* Break out of container to full width */
+             position: relative;
+             left: 50%;
+             right: 50%;
+             margin-left: -50vw;
+             margin-right: -50vw;
+             width: 100vw;
+             max-width: 100vw;
+             padding: 0 20px;
+         }
+         .partners-logos img {
+             height: 60px;
+             width: auto;
+             object-fit: contain;
+             filter: grayscale(0%);
+             opacity: 0.95;
+             transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+             flex-shrink: 0;
+         }
+         .partners-logos img:hover {
+             opacity: 1;
+             filter: grayscale(0%);
+         }
+         
+         @keyframes scroll-right {
+             0% { transform: translateX(100%); }
+             100% { transform: translateX(-100%); }
+         }
+         
+         .partners-logos:hover {
+             animation-play-state: paused;
+         }
 
         /* Promise Section (after header) */
         .promise-section {
@@ -752,8 +781,14 @@
             .reverse-mobile .content-text { grid-row: 1; }
             .reverse-mobile .content-image { grid-row: 2; }
 
-            /* Partners: mobile adjustments */
-            .partners-logos img { height: 40px; }
+                         /* Partners: mobile adjustments */
+             .partners-logos { 
+                 animation: scroll-right 30s linear infinite;
+                 height: 50px; 
+                 gap: 40px; 
+                 padding: 0 16px;
+             }
+             .partners-logos img { height: 29px; }
 
             /* Promise: mobile adjustments */
             .promise-benefits { grid-template-columns: 1fr; }
@@ -1002,7 +1037,6 @@
     <!-- Stats Section -->
         <section class="stats-section">
             <div class="container">
-                <h2 class="section-title">Bevis & nyckeltal</h2>
                 <div class="stats-grid">
                     <div class="stat-item">
                         <h3>99%</h3>
@@ -1029,7 +1063,7 @@
             <div class="container">
                 <div class="content-section">
                     <div class="content-text">
-                        <h2>Kundcase</h2>
+                        <h2 class="development-title">Exempel på vidareutveckling: Kundcase</h2>
                         <p>Resultat från samarbeten: högre leveranssäkerhet, sänkt TCO och transparent klimatdata per palltyp.</p>
                         <p>Kontakta oss för case-exempel inom ert segment och flöde.</p>
                     </div>
@@ -1038,7 +1072,7 @@
                     </div>
                 </div>
 
-                <h2 class="section-title">Exempel</h2>
+                <h2 class="development-title">Exempel på saker jag kan lägga till om fler sidor vill has:</h2>
                 <div class="news-grid">
                     <div class="news-item">
                         <img src="https://via.placeholder.com/300x200/00ae42/ffffff?text=OTIF" alt="Leveransprecision">
